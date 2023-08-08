@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import axios from "axios";
 import { fetchData } from "./scraping.mjs";
 import { connection } from "./database.mjs";
+import { router } from "./api.mjs";
 
 dotenv.config();
 
@@ -17,6 +18,9 @@ connection();
 
 //scraping
 //fetchData(axios);
+
+//get data from the api
+app.use("/api", router);
 
 //routes
 app.get("/", (req, res) => {
