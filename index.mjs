@@ -4,12 +4,19 @@ import axios from "axios";
 import { fetchData } from "./scraping.mjs";
 import { connection } from "./database.mjs";
 import { router } from "./api.mjs";
+import path from "path";
+import { fileURLToPath } from "url";
+import { Player } from "./database.mjs";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config();
 
 //create the app
 const app = express();
 app.set("view engine", "ejs");
+app.use("/static", express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -24,7 +31,14 @@ app.use("/api", router);
 
 //routes
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  Player.find({})
+    .then((players) => {
+      res.render("index.ejs", { players });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send("Server error");
+    });
 });
 
 app.listen(3000, () => {

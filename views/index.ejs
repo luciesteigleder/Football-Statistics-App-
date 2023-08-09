@@ -3,11 +3,55 @@
 
 <head>
     <meta charset="UTF-8">
+    <script src="/static/scripts/index.js" type="text/javascript"></script>
     <title>Football Statistics App</title>
 </head>
 
 <body>
     <h1>Welcome to the Football Statistics App!</h1>
+
+    <section class="playersSection">
+
+        <% players.forEach((player)=> { %>
+
+        <div class="playerCardFrame">
+            <div class="playerInfo1">
+                <img src="<%= player.img_url %>" alt="<%= player.playerName %>">
+                <div class="playerInfoText">
+                    <p class="playerName">
+                        <%= player.playerName %>
+                    </p>
+                    <p class="playerAge">
+                        <%= player.age %>
+                    </p>
+                </div>
+                <p class="playerCountry">
+                    <%= player.nationality %>
+                </p>
+            </div>
+            <div class="playerInfo2">
+                <p class="club">
+                    <%= player.club %>
+                </p>
+                <p class="prefPosition">
+                    <%= player.pref_position1 %>
+                </p>
+            </div>
+            <div class="playerInfo3">
+                <p class="playerStatistics">Rating (OVR): <%= player.rating_OVR %>
+                </p>
+                <p class="playerStatistics">Rating (POT): <%= player.rating_POT %>
+                </p>
+            </div>
+        </div>
+
+        <% }) %>
+
+        
+    </section>
+    
+
+    <script src="/static/scripts/index.js"></script>
 </body>
 
 </html>
