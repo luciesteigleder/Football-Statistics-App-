@@ -1,0 +1,105 @@
+//Variables and mixins
+$primaryColor: #2596be;
+$textColor: #232023;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'DM Sans', sans-serif;
+    color: $textColor;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    text-transform: uppercase;
+    font-weight: 700;
+
+    .logo {
+        color: $primaryColor;
+        font-size: 30px;
+        margin: 30px;
+    }
+
+    nav {
+        ul {
+            list-style: none;
+            display: flex;
+
+            li {
+                margin: 30px;
+            }
+        }
+    }
+
+    button {
+        border: 3px solid $primaryColor;
+        border-radius: 2px;
+        background-color: white;
+        padding: 7px;
+        margin: 30px;
+        color: $primaryColor;
+        text-transform: uppercase;
+        font-weight: 700;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: $primaryColor;
+            color: white;
+        }
+    }
+}
+
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    .banner {
+        background-image: url('https://img.freepik.com/free-vector/gradient-football-game-twitch-banner_23-2149900025.jpg?w=1480&t=st=1691652093~exp=1691652693~hmac=a171f8eb641f11de06fd1f07c16e1725c1e38993374ab381dbb56c62c054d462');
+        background-size: cover;
+        background-position: center;
+        height: 300px;
+    }
+}
+
+.playersSection {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    .playerCardFrame a {
+        height: 80px;
+        width:310px;
+        border: 3px solid lightgrey;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .playerIndex {
+            font-weight: 700;
+        }
+        img {
+            height: 70px;
+            padding: 0 10px;
+        }
+        .playerInfoText {
+            .playerName {
+                font-weight: 700;
+            }
+        }
+        &:hover {
+            background-color: #f9f9f9;
+        }
+    }
+}
+
+.playerCard {
+    background-color: $primaryColor;
+}

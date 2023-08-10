@@ -1,56 +1,43 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="UTF-8">
-    <script src="/static/scripts/index.js" type="text/javascript"></script>
-    <title>Football Statistics App</title>
-</head>
+<%- include('./partials/head_header.ejs') %>
+
 
 <body>
+
+
+
+    <div class="banner"></div>
+
     <h1>Welcome to the Football Statistics App!</h1>
+
+    <h2>Here are all the best players in the world</h2>
+
 
     <section class="playersSection">
 
-        <% players.forEach((player)=> { %>
-
+        <% players.forEach((player, index)=> { %>
+        
         <div class="playerCardFrame">
-            <div class="playerInfo1">
+            <a href="/players/<%= player._id %>">
+                <p class="playerIndex"><%= index +1 %></p>
                 <img src="<%= player.img_url %>" alt="<%= player.playerName %>">
                 <div class="playerInfoText">
                     <p class="playerName">
                         <%= player.playerName %>
                     </p>
-                    <p class="playerAge">
-                        <%= player.age %>
+                    <p class="playerCountry">
+                        <%= player.nationality %>
                     </p>
                 </div>
-                <p class="playerCountry">
-                    <%= player.nationality %>
-                </p>
-            </div>
-            <div class="playerInfo2">
-                <p class="club">
-                    <%= player.club %>
-                </p>
-                <p class="prefPosition">
-                    <%= player.pref_position1 %>
-                </p>
-            </div>
-            <div class="playerInfo3">
-                <p class="playerStatistics">Rating (OVR): <%= player.rating_OVR %>
-                </p>
-                <p class="playerStatistics">Rating (POT): <%= player.rating_POT %>
-                </p>
-            </div>
+            </a>
         </div>
 
         <% }) %>
 
-        
     </section>
     
-
     <script src="/static/scripts/index.js"></script>
 </body>
 

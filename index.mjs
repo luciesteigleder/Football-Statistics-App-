@@ -41,6 +41,20 @@ app.get("/", (req, res) => {
     });
 });
 
+app.get("/players/:id", (req, res) => {
+  const playerID = req.params.id;
+  console.log(playerID);
+  Player.findById(playerID)
+    .then((player) => {
+      res.status(200).render("player.ejs", { player: player });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send("Server error");
+    });
+  // res.status(200).render("player.ejs", { playerID });
+});
+
 app.listen(3000, () => {
   console.log("Server started on port 3000");
 });

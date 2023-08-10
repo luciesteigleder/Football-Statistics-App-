@@ -2,10 +2,9 @@
 fetch("/api/players")
   .then((response) => response.json())
   .then((data) => {
-    console.log(data);
+    //console.log(data);
     // Process the data and update the HTML elements
     // const playersContainer = document.querySelector(".playerCardFrame");
-
     // data.forEach((player) => {
     //   //console.log(player);
     //   const playerDiv = document.createElement("div");
