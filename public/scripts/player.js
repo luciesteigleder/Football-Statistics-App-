@@ -1,10 +1,3 @@
-// fetch("/api/players")
-//   .then((response) => response.json())
-//   .then((data) => {
-//     console.log(data);
-//   })
-//   .catch((error) => console.error(error));
-
 const playerID = window.location.pathname.split("/").pop();
 console.log(playerID);
 

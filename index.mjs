@@ -6,7 +6,7 @@ import { connection } from "./database.mjs";
 import { router } from "./api.mjs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { Player } from "./database.mjs";
+//import { Player } from "./database.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,10 +21,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //db
-connection();
+// connection();
 
 //scraping
-//fetchData(axios);
+// fetchData(axios);
 
 //get data from the api
 app.use("/api", router);
@@ -55,6 +55,6 @@ app.get("/players/:id", (req, res) => {
   // res.status(200).render("player.ejs", { playerID });
 });
 
-app.listen(3000, () => {
-  console.log("Server started on port 3000");
+app.listen(3002, () => {
+  console.log("Server started on port 3002");
 });

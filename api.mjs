@@ -1,6 +1,6 @@
 import express from "express";
 const router = express.Router();
-import { Player } from "./database.mjs";
+//import { Player } from "./database.mjs";
 
 router.get("/players", async (req, res) => {
   try {

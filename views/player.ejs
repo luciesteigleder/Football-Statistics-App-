@@ -5,26 +5,62 @@
 
 <body>
 
-    <div class="playerCard">
+    <section class="firstSection">
 
-        <div class="leftDiv">
-            <p class="playerName"><%= player.playerName %></p>
-            <p class="playerAge"></p>
-            <p class="playerCountry"></p>
-            <p class="playerIndex"></p>
+        <div class="playerCard">
+
+            <div class="leftDiv">
+                <p class="playerName"><%= player.playerName %></p>
+                <p class="playerCountry">France</p>
+                <p class="playerIndex">1</p>
+            </div>
+
+            <div class="centerDiv">
+                <img src="" alt="">
+            </div>
+
+            <div class="rightDiv">
+                <div class="age">
+                    <p>Age:</p>
+                    <p class="playerAge">25 ans</p>
+                </div>
+
+                <div class="birth">
+                    <p>Birthdate: </p>
+                    <p class="playerBD">1989</p>
+                </div>
+
+                <div class="weight">
+                    <p>Weight:</p>
+                    <p class="playerWeight">55 kg</p>
+                </div>
+
+                <div class="height">
+                    <p>Height:</p>
+                    <p class="playerHeight">1.65m</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="secondSection">
+        <p>Other Stats</p>
+
+        <div class="playerClub">
+            <p>Club Name</p>
+            <p class="clubName"></p>
         </div>
 
-        <div class="centerDiv">
-            <img src="" alt="">
+        <div class="Playerposition">
+            <p>Preffered position</p>
+            <p class="position"></p>
         </div>
 
-        <div class="rightDiv">
-            <p class="playerClub"></p>
-            <p class="playerPosition"></p>
-            <p class="playerStats"></p>
-        </div>
+        <div class="playerStats"></div>
 
-    </div>
+    </section>
 
 
     <script src="/static/scripts/player.js"></script>

@@ -85,8 +85,25 @@ body .banner {
   background-color: #f9f9f9;
 }
 
-.playerCard {
+.playerCard .firstSection {
   background-color: #2596be;
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  height: 600px;
+}
+.playerCard .firstSection .leftDiv {
+  display: flex;
+  font-weight: 700;
+}
+.playerCard .firstSection .centerDiv {
+  align-items: center;
+}
+.playerCard .firstSection .rightDiv div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 /*# sourceMappingURL=index.css.map */

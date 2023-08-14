@@ -101,5 +101,26 @@ body {
 }
 
 .playerCard {
-    background-color: $primaryColor;
+    .firstSection {
+        background-color: $primaryColor;
+        color: white;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        height: 600px;
+        .leftDiv {
+            display: flex;
+            font-weight: 700;
+        }
+        .centerDiv {
+            align-items: center;
+        }
+        .rightDiv {
+            div {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+    }
 }
