@@ -1,11 +1,6 @@
 import cheerio from "cheerio";
 import mongoose from "mongoose";
-import {
-  connection,
-  //Player,
-  Links,
-  disconnectFromDatabase,
-} from "./database.mjs";
+import { connection, Links, disconnectFromDatabase } from "./database.mjs";
 
 export async function fetchData(axios) {
   // connection to the db
@@ -24,7 +19,7 @@ export async function fetchData(axios) {
 
     const linksArray = [];
     // Extracting links from the HTML
-    $("a.link-player").each((index, element) => {
+    $("td[data-title='Name'] a.link-player").each((index, element) => {
       const link = $(element).attr("href");
       linksArray.push(link);
     });
@@ -119,7 +114,7 @@ export async function fetchData(axios) {
     //   .text();
 
     // Create a new player document
-    //   const newPlayer = new Player({
+    //
     //     playerName,
     //     nationality,
     //     rating_OVR,
@@ -135,14 +130,7 @@ export async function fetchData(axios) {
     //     playerValue,
     //   });
 
-    //   try {
-    //     // Save the player document to the database
-    //     await newPlayer.save();
-    //     console.log("Player saved:", playerName);
-    //   } catch (error) {
-    //     console.error("Error saving player:", error);
-    //   }
-    // }
+    //
 
     // currentPage++;
 

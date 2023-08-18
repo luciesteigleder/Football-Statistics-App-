@@ -3,13 +3,10 @@ import mongoose from "mongoose";
 //connection to the db
 const connection = () => {
   return mongoose
-    .connect(
-      "mongodb+srv://luciesteigleder:ToAzK0RcIdie2k1I@football.x3hfrow.mongodb.net/football?retryWrites=true&w=majority",
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }
-    )
+    .connect(process.env.CONNECTION_STRING, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
     .then(() => {
       console.log("MongoDB Atlas connected!");
     })
@@ -18,23 +15,23 @@ const connection = () => {
     });
 };
 
-// const playerSchema = new mongoose.Schema({
-//   playerName: String,
-//   nationality: String,
-//   rating_OVR: Number,
-//   rating_POT: Number,
-//   pref_position1: String,
-//   age: Number,
-//   club: String,
-//   img_url: String,
-//   playerHeight: String,
-//   playerWeight: String,
-//   preferredFoot: String,
-//   birthDate: String,
-//   playerValue: String,
-// });
+const playerSchema = new mongoose.Schema({
+  playerName: String,
+  nationality: String,
+  rating_OVR: Number,
+  rating_POT: Number,
+  pref_position1: String,
+  age: Number,
+  club: String,
+  img_url: String,
+  playerHeight: String,
+  playerWeight: String,
+  preferredFoot: String,
+  birthDate: String,
+  playerValue: String,
+});
 
-// const Player = mongoose.model("Player", playerSchema);
+const Player = mongoose.model("Player", playerSchema, "players");
 
 const linksSchema = new mongoose.Schema({
   id: String,
@@ -52,4 +49,4 @@ async function disconnectFromDatabase() {
   }
 }
 
-export { connection, Links, disconnectFromDatabase };
+export { connection, Links, Player, disconnectFromDatabase };

@@ -1,12 +1,13 @@
 import express from "express";
-import dotenv from "dotenv";
+import cheerio from "cheerio";
 import axios from "axios";
-import { fetchData } from "./scraping.mjs";
-import { connection } from "./database.mjs";
-import { router } from "./api.mjs";
+import dotenv from "dotenv";
+//import { fetchData } from "./scraping.mjs";
+//import { getPlayerAPI } from "./scrapingAll.mjs";
+import { Player } from "./database.mjs";
 import path from "path";
 import { fileURLToPath } from "url";
-//import { Player } from "./database.mjs";
+import { Links } from "./database.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,13 +22,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //db
-// connection();
+//connection();
 
 //scraping
-// fetchData(axios);
+//fetchData(axios);
 
-//get data from the api
-app.use("/api", router);
+//Get data from the players
+//getPlayerAPI();
 
 //routes
 app.get("/", (req, res) => {
@@ -53,6 +54,16 @@ app.get("/players/:id", (req, res) => {
       res.status(500).send("Server error");
     });
   // res.status(200).render("player.ejs", { playerID });
+});
+
+//create the API with the players links
+app.get("/links", async (req, res) => {
+  try {
+    const links = await Links.find({});
+    res.json(links);
+  } catch (error) {
+    res.status(500).json({ error: "Error fetching links from the database" });
+  }
 });
 
 app.listen(3002, () => {
