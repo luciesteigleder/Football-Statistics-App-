@@ -8,10 +8,12 @@
 
 
 
-    <div class="banner"></div>
+    <div class="banner">
 
-    <h1>Welcome to the Football Statistics App!</h1>
+        <h1>Welcome to the Football Statistics App!</h1>
 
+    </div>
+    
     <h2>Here are all the best players in the world</h2>
 
 
@@ -27,7 +29,9 @@
                     <p class="playerName">
                         <%= player.playerName %>
                     </p>
+
                     <p class="playerCountry">
+                        <%= player.image_nation %>
                         <%= player.nationality %>
                     </p>
                 </div>
@@ -37,8 +41,46 @@
         <% }) %>
 
     </section>
+
+    <section class="allPlayers">
+
+
+<% Object.keys(allArrays).forEach(letter=> { %>
+            <h3 id="<%= letter %>">
+                <%= letter %>
+            </h3>
+    <div class="letterList" id="<%= letter %>">
+
+        <div>
+            <% allArrays[letter].forEach(player=> { %>
+                <p>
+                    <a href="/players/<%= player._id %>">
+                        <%= player.fullName %>
+                    </a>
+                </p>
+                <% }); %>
+        </div>
+    </div>
+    <% }); %>
+
+    </section>
+
     
     <script src="/static/scripts/index.js"></script>
 </body>
+
+<!-- <script>
+    async function getFlagEmoji(countryName) {
+        try {
+            const response = await fetch(`https://restcountries.com/v3.1/name/${countryName}`);
+            const data = await response.json();
+            const flag = data[0]?.flags?.emoji;
+            return flag || '';
+        } catch (error) {
+            console.log(error);
+            return '';
+        }
+    }
+</script> -->
 
 </html>

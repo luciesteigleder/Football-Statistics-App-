@@ -1,18 +1,29 @@
 import cheerio from "cheerio";
 import axios from "axios";
-import { connection, Player, disconnectFromDatabase } from "./database.mjs";
+import {
+  connection,
+  Player,
+  Links,
+  disconnectFromDatabase,
+} from "./database.mjs";
 
 //function to get data from each page:
 const getPlayerAPI = async () => {
   await connection();
-  const response = await fetch("http://localhost:3002/links");
-  const data = await response.json();
-  console.log(data.length);
-  for (let i = 0; i < data.length; i++) {
+  const links = await Links.find({});
+  // const data = await response.json();
+  // console.log(data.length);
+  // for (let i = 0; i < data.length; i++) {
+  for (let i = 0; i < links.length; i++) {
     console.log("i " + i);
-    console.log("data[i].link " + data[i].link);
-    const playerURL = getPlayerURL(data[i].link);
+    // console.log("data[i].link " + data[i].link);
+    const link = links[i];
+    console.log("TEST THIS INK");
+    console.log(link);
+    const playerLink = link.link;
+    let playerURL = await getPlayerURL(playerLink);
     //console.log("playerURL " + playerURL);
+
     await getPlayerInfo(axios, playerURL);
     // i++;
   }
@@ -29,6 +40,8 @@ const getPlayerURL = (link) => {
 const getPlayerInfo = async (axios, playerURL) => {
   try {
     //let playerURL = await getPlayerAPI();
+    console.log("WE TRY TO GET INFO");
+    console.log(playerURL);
     const playerInfo = await axios.get(playerURL);
     const html = playerInfo.data;
     //console.log(html);
@@ -36,6 +49,7 @@ const getPlayerInfo = async (axios, playerURL) => {
 
     const playerName = $("li.breadcrumb-item.active").text();
     const nationality = $("a.link-nation").attr("title");
+    const image_nation = $("img.nation").attr("src");
     const pref_pos = $("a.link-position").attr("title");
     let pref_position1;
     let pref_position2;
@@ -77,6 +91,7 @@ const getPlayerInfo = async (axios, playerURL) => {
     if (existingPlayer) {
       // Player already exists, update the document with new data
       existingPlayer.nationality = nationality;
+      existingPlayer.image_nation = image_nation;
       existingPlayer.pref_position1 = pref_position1;
       existingPlayer.age = age;
       existingPlayer.club = club;
@@ -99,8 +114,8 @@ const getPlayerInfo = async (axios, playerURL) => {
       const newPlayer = new Player({
         playerName,
         nationality,
+        image_nation,
         pref_position1,
-        age,
         club,
         img_url,
         playerHeight,
@@ -123,4 +138,4 @@ const getPlayerInfo = async (axios, playerURL) => {
   }
 };
 
-export { getPlayerAPI };
+export { getPlayerAPI, getPlayerInfo };

@@ -24,7 +24,7 @@ header nav ul {
   display: flex;
 }
 header nav ul li {
-  margin: 30px;
+  margin: 40px;
 }
 header button {
   border: 3px solid #2596be;
@@ -47,10 +47,20 @@ body {
   flex-direction: column;
 }
 body .banner {
-  background-image: url("https://img.freepik.com/free-vector/gradient-football-game-twitch-banner_23-2149900025.jpg?w=1480&t=st=1691652093~exp=1691652693~hmac=a171f8eb641f11de06fd1f07c16e1725c1e38993374ab381dbb56c62c054d462");
-  background-size: cover;
-  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 300px;
+  width: 100 vw;
+  background-color: #2596be;
+}
+body .banner h1 {
+  color: white;
+  font-size: 50px;
+}
+body h2 {
+  margin-top: 40px;
+  margin-left: 40px;
 }
 
 .playersSection {
@@ -59,11 +69,12 @@ body .banner {
   flex-wrap: wrap;
   justify-content: center;
   transition: background-color 0.3s ease;
+  margin: 40px;
 }
 .playersSection .playerCardFrame a {
   height: 80px;
   width: 310px;
-  border: 3px solid lightgrey;
+  border: 3px solid #f8f8f8;
   border-radius: 5px;
   padding: 10px;
   margin: 10px;
@@ -82,28 +93,129 @@ body .banner {
   font-weight: 700;
 }
 .playersSection .playerCardFrame a:hover {
-  background-color: #f9f9f9;
+  background-color: #f8f8f8;
 }
 
-.playerCard .firstSection {
+.alphabet .letterButton {
+  padding: 10px 12px;
+  border: none;
+  font-weight: bold;
+  background-color: #f8f8f8;
+}
+.alphabet .letterButton span {
+  padding: 3px 7px;
+  border-radius: 20px;
+}
+.alphabet .letterButton span:hover {
+  background-color: #bad305;
+}
+
+.allPlayers {
+  font-size: 12px;
+  max-width: 100vw;
+}
+.allPlayers h3 {
+  display: none;
+}
+.allPlayers .letterList {
+  display: none;
+  margin-left: 20px;
+  max-width: 100vw;
+  column-width: 300px;
+}
+.allPlayers .letterList div {
+  max-width: 100vw;
+  column-width: 300 px;
+}
+.allPlayers .letterList div p {
+  display: block;
+  padding: 8px 10px 8px 10px;
+  margin: 0 50px 0 10px;
+  max-width: 200px;
+}
+.allPlayers .letterList div p:nth-of-type(even) {
+  background-color: #f8f8f8;
+}
+
+.firstSection {
   background-color: #2596be;
-  color: white;
+  height: 400px;
+  width: 100vw;
   display: flex;
   justify-content: space-evenly;
-  flex-direction: column;
-  height: 600px;
+  margin-bottom: 50px;
 }
-.playerCard .firstSection .leftDiv {
+.firstSection div {
+  width: 33vw;
   display: flex;
+  flex-direction: column;
+}
+.firstSection div p {
+  color: white;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.firstSection div.leftDiv {
+  padding-left: 50px;
+  padding-top: 50px;
+}
+.firstSection div.leftDiv .playerName {
+  font-size: 40px;
   font-weight: 700;
 }
-.playerCard .firstSection .centerDiv {
+.firstSection div.centerDiv {
+  flex-direction: row;
+  align-items: flex-end;
+}
+.firstSection div.centerDiv img {
+  width: 300px;
+  height: auto;
+}
+.firstSection div.rightDiv {
+  padding-left: 50px;
+  padding-top: 50px;
+}
+.firstSection div.rightDiv .infoValue {
+  padding-left: 25px;
+  padding-bottom: 10px;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.secondSection {
+  background-color: #2596be;
+  border-radius: 5px;
+  width: 50vw;
+  margin: auto;
+  margin-bottom: 50px;
+}
+.secondSection h3 {
+  padding-left: 15px;
+  padding-top: 15px;
+}
+.secondSection * {
+  color: white;
+  font-weight: 700;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.secondSection div {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
-.playerCard .firstSection .rightDiv div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.secondSection div p {
+  padding-left: 50px;
+}
+.secondSection div p.infoValue {
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 10px;
+  font-size: 25px;
+  font-weight: 400;
+}
+.secondSection hr {
+  margin: 0 15px;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -1,20 +1,5 @@
 import mongoose from "mongoose";
 
-//connection to the db
-const connection = () => {
-  return mongoose
-    .connect(process.env.CONNECTION_STRING, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
-    .then(() => {
-      console.log("MongoDB Atlas connected!");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
 const playerSchema = new mongoose.Schema({
   playerName: String,
   nationality: String,
@@ -39,6 +24,7 @@ const linksSchema = new mongoose.Schema({
 });
 
 const Links = mongoose.model("links", linksSchema, "links");
+
 // Disconnect from the MongoDB database
 async function disconnectFromDatabase() {
   try {
@@ -48,5 +34,18 @@ async function disconnectFromDatabase() {
     console.error("Error disconnecting from MongoDB:", error);
   }
 }
+
+const connection = async () => {
+  try {
+    await mongoose.connect(process.env.CONNECTION_STRING, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      dbName: "football",
+    });
+    console.log("MongoDB Atlas connected!");
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error);
+  }
+};
 
 export { connection, Links, Player, disconnectFromDatabase };
