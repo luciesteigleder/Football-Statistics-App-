@@ -2,7 +2,8 @@
   "name": "football-statistics-app-",
   "version": "1.0.0",
   "description": "The objective of this challenge is to create a non-relational database using MongoDB Atlas, and scrape data from https://www.fifaindex.com/players/. Your application should be able to store and display player information, including **player name**, **age**, **nationality**, **position**, **club**, and **ratings**.",
-  "main": "index.js",
+  "main": "index.mjs",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.mjs"
