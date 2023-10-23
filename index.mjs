@@ -1,9 +1,9 @@
 import express from "express";
-import cheerio from "cheerio";
-import axios from "axios";
+// import cheerio from "cheerio";
+// import axios from "axios";
 import dotenv from "dotenv";
 //import { fetchData } from "./scraping.mjs";
-import { getPlayerAPI, getPlayerInfo } from "./scrapingAll.mjs";
+// import { getPlayerAPI, getPlayerInfo } from "./scrapingAll.mjs";
 import { connection, Player, disconnectFromDatabase } from "./database.mjs";
 import path from "path";
 import { fileURLToPath } from "url";
